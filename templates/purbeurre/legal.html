@@ -1,0 +1,87 @@
+{% extends 'purbeurre/base.html' %}
+{% load static %}
+{% block title %}Mentions légales{% endblock %}
+{% block content %}
+    <section class="page-section" id="kotyk">
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2 class="bg-secondary mb-5 p-2 text-light rounded">Mentions légales</h2>
+            </div>
+        </div>
+    </section>
+    <section class="page-section">
+        <div class="container">
+            <div class="justify-content-center">
+                <h2 class="col text-center text-dark">Ce site est hébergé sur <a class="text-decoration-none" target="_blank" href="https://www.heroku.com">Heroku</a> et utilise les ressources suivantes:</h2>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="mb-5 col-md-4 mb-lg-0 text-center">
+                    <div class="bg-transparent text-dark">
+                        <img src="{% static 'img/kawin-harasai.jpg' %}" class="img-fluid legal" alt="Photo de kawin harasai">
+                        <div class="card-body">
+                            <h5 class="card-title">Kawin Harasai</h5>
+                            <p class="card-text">Image de fond</p>
+                            <a target="_blank" href="https://unsplash.com/photos/k60JspcBwKE" class="btn btn-primary">Lien vers Unsplash</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5 col-md-4 mb-lg-0 text-center">
+                    <div class="bg-transparent text-dark">
+                        <img src="{% static 'img/greg-jeanneau.jpg' %}" class="img-fluid legal" alt="Photo de Greg Jeanneau">
+                        <div class="card-body">
+                            <h5 class="card-title">Greg Jeanneau</h5>
+                            <p class="card-text">Image de fond</p>
+                            <a target="_blank" href="https://unsplash.com/photos/YTbFHT9_IhY" class="btn btn-primary">Lien vers Unsplash</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="bg-transparent text-dark">
+                        <img src="{% static 'img/olenka-kotyk.jpg' %}" class="img-fluid legal" alt="Photo de Olenka Kotyk">
+                        <div class="card-body">
+                            <h5 class="card-title">Olenka Kotyk</h5>
+                            <p class="card-text">Image de fond</p>
+                            <a target="_blank" href="https://unsplash.com/photos/eqsEZNCm4-c" class="btn btn-primary">Lien vers Unsplash</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="mb-5 col-md-4 mb-lg-0 text-center">
+                    <div class="bg-transparent text-dark">
+                        <img src="{% static 'img/carrot.png' %}" class="img-fluid legal bg-light" alt="Icône de carotte">
+                        <div class="card-body">
+                            <h5 class="card-title">Fabien Jouin</h5>
+                            <p class="card-text">Icône de carotte</p>
+                            <a target="_blank" href="https://thenounproject.com/FabienJ/" class="btn btn-primary">Lien vers thenounproject.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5 col-md-4 mb-lg-0 text-center">
+                    <div class="bg-transparent text-dark">
+                        <img src="{% static 'img/openfoodfacts.png' %}" class="img-fluid legal bg-light" alt="Photo de OpenFoodFatcs">
+                        <div class="card-body">
+                            <h5 class="card-title">OpenFoodFacts</h5>
+                            <p class="card-text">Base de données</p>
+                            <a target="_blank" href="https://fr.openfoodfacts.org/" class="btn btn-primary">Lien vers OpenFoodFacts</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="bg-transparent text-dark">
+                        <img src="{% static 'img/bootstrap.jpg' %}" class="img-fluid legal" alt="Photo du theme de Bootstrap">
+                        <div class="card-body">
+                            <h5 class="card-title">Bootstrap</h5>
+                            <p class="card-text">Theme de Bootstrap</p>
+                            <a target="_blank" href="https://startbootstrap.com/themes/creative/" class="btn btn-primary">Lien vers Bootstrap creative</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="justify-content-center mt-5">
+            <h2 class="col text-center text-dark">Code source sur <a class="text-decoration-none" target="_blank" href="https://github.com/MikaIce/PlateForm_Nut_P08">Github</a></h2>
+            <h6 class="col text-center text-dark mt-3">Create By Michael BENOIT 2022</h6>
+        </div>
+    </section>
+{% endblock %}

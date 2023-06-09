@@ -1,0 +1,161 @@
+body{
+    font-family: "Scope One", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: "Open Sans", sans-serif;
+}
+
+.logo_pur_beurre{
+    height: 2rem;
+}
+
+.portrait{
+    background-color: white;
+    border: 10px solid #C45525;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+}
+
+#services{
+    color: white;
+    background-color: #DE9440;
+}
+
+footer{
+    background-color: #345A61;
+}
+
+footer a{
+    color: white;
+}
+
+footer a:hover{
+    text-decoration: none;
+}
+
+#button-addon2{
+    background-color: #C45525;
+    color: white;
+}
+
+#carrot{
+    width: 40px;
+    height: 60px;
+    fill: currentcolor;
+}
+
+#kotyk{
+    padding-top: 8rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background-image: url("../img/olenka-kotyk.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+#jeanneau{
+    padding-top: 8rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background-image: url("../img/greg-jeanneau.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+#harasai{
+    padding-top: 8rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background-image: url("../img/kawin-harasai.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.image_url{
+    max-width: 250px;
+    height: 250px;
+}
+
+.nutriscore{
+    color: white;
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-size: 30px;
+    font-weight: bold;
+    border: 1px solid;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    display: inline;
+}
+
+.nutriscore-a{
+    background-color: #07942d;
+}
+
+.nutriscore-b{
+    background-color: #11ff00;
+}
+
+.nutriscore-c{
+    background-color: #f6ff00;
+}
+
+.nutriscore-d{
+    background-color: #f2ab11;
+}
+
+.nutriscore-e{
+    background-color: #ff2a00;
+}
+
+.short{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.legal{
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+@media (max-width: 576px){
+
+    .portrait{
+        width: 200px;
+        height: 200px;
+    }
+
+    .pagination{
+        font-size: 11px;
+    }
+
+    .border-primary{
+        width: 320px;
+    }
+
+    .new{
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px){
+
+    .image_url{
+        max-width: 200px;
+        height: 200px;
+    }
+
+    .btn{
+        font-size: 13px;
+    }
+}

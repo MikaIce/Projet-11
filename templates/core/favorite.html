@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Mes produits{% endblock %}
+{% block content %}
+    <section id="jeanneau" class="h-50">
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <h2 class="bg-secondary text-light p-2 rounded">Mes produits</h2>
+            </div>
+        </div>
+    </section>
+{% if page_obj %}
+    <section class="h-auto">
+        <div class="container">
+            <div class="row mt-5">
+                    {% for fav in page_obj %}
+                        <div class="col-md-4 col-xs-12 my-5">
+                            <div class="card border-primary">
+                                <div class="nutriscore nutriscore-{{ fav.sub.nutriscore }} text-center">
+                                    {{ fav.sub.nutriscore|upper }}
+                                </div>
+                                <a class="mx-auto" title="Voir la fiche de ce produit" href="{% url 'core:product' product_id=fav.sub.id %}">
+                                    <img src="{{ fav.sub.image }}" class="image_url img-fluid mt-3 mx-auto" alt="Photo du produit">
+                                </a>
+                                <div id="card" class="card-body">
+                                    <h5 class="card-title short" title="{{ fav.sub.name }}">{{ fav.sub.name }}</h5>
+                                    <p class="card-text short" title="{{ fav.sub.brands }}">Marque: {{ fav.sub.brands }}</p>
+                                    <a href="{% url 'core:substitute' product_id=fav.sub.id %}" class="btn btn-primary d-block w-75 mx-auto">
+                                        Rechercher un substitut
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 my-auto">
+                            <h2 class="text-center mb-5">Remplace</h2>
+                            <a href="{% url 'core:delete' fav=fav.id %}" class="btn btn-danger d-block w-50 mx-auto">
+                                Supprimer ce favori
+                            </a>
+                        </div>
+                        <div class="col-md-4 my-5">
+                            <div class="card border-primary">
+                                <div class="nutriscore nutriscore-{{ fav.prod.nutriscore }} text-center">
+                                    {{ fav.prod.nutriscore|upper }}
+                                </div>
+                                <a class="mx-auto" title="Voir la fiche de ce produit" href="{% url 'core:product' product_id=fav.prod.id %}">
+                                    <img src="{{ fav.prod.image }}" class="image_url img-fluid mt-3 mx-auto" alt="Photo du produit">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title short" title="{{ fav.prod.name }}">{{ fav.prod.name }}</h5>
+                                    <p class="card-text short" title="{{ fav.prod.brands }}">Marque: {{ fav.prod.brands }}</p>
+                                    <a href="{% url 'core:substitute' product_id=fav.prod.id %}" class="btn btn-primary d-block w-75 mx-auto">
+                                        Rechercher un substitut
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                <div class="container pagination justify-content-center mb-5">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; Début</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">Page précédente</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">Page suivante</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">Fin &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+{% else %}
+    <section class="h-75 mt-5">
+        <div class="container" style="height: 230px;">
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-center">Vous n'avez actuellement aucun favori</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+{% endblock %}

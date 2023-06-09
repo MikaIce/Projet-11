@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Erreur 500{% endblock %}
+{% block content %}
+<section id="harasai" class="h-100">
+    <div class="container text-light">
+        <div class="row justify-content-center">
+            <h2 class="p-2 mb-5 bg-secondary rounded text-center">Une erreur est survenue</h2>
+        </div>
+        <div class="row justify-content-center mt-5">
+            <h3 class="mt-5"><a class="text-light text-decoration-none" href="{% url 'index' %}">Retour à la page d'accueil</a></h3>
+        </div>
+    </div>
+</section>
+{% endblock %}

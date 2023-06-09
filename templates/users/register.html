@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Créer un compte{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section id="harasai">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2 class="bg-secondary p-2 rounded text-light mb-5">Créer un compte</h2>
+        </div>
+        <div class="row justify-content-center">
+            <form method="post" class="bg-light p-3 rounded">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="form-group">
+                    <label for="id_gender">Genre :</label>
+                    <select id="id_gender" name="gender" class="form-control">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Créer un compte</button>
+                <p class="mt-3">Vous avez déjà un compte? <a href="{% url 'users:login' %}">Se connecter</a></p>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

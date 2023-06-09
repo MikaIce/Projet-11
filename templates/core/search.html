@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Recherche{% endblock %}
+{% block content %}
+    <section id="jeanneau" class="h-50">
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <h3 class="bg-secondary text-light text-center p-2 rounded">Voici les produits correspondants à votre recherche</h3>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row mt-5">
+                {% for product in page_obj %}
+                    <div class="col-md-4 my-5">
+                        <div class="card border-primary">
+                            <div class="nutriscore nutriscore-{{ product.nutriscore }} text-center">
+                                {{ product.nutriscore|upper }}
+                            </div>
+                            <a class="mx-auto" title="Voir la fiche de ce produit" href="{% url 'core:product' product_id=product.id %}">
+                                <img src="{{ product.image }}" class="image_url img-fluid mt-3 mx-auto" alt="Photo du produit">
+                            </a>
+                            <div id="card" class="card-body">
+                                <h5 class="card-title short" title="{{ product.name }}">{{ product.name }}</h5>
+                                <p class="card-text short" title="{{ product.brands }}">Marque: {{ product.brands }}</p>
+                                <a href="{% url 'core:substitute' product_id=product.id %}" class="btn btn-primary d-block w-75 mx-auto">
+                                    Rechercher un substitut
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="container pagination justify-content-center mb-5">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?query={{ query }}&page=1">&laquo; Début</a>
+                        <a href="?query={{ query }}&page={{ page_obj.previous_page_number }}">Page précédente</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?query={{ query }}&page={{ page_obj.next_page_number }}">Page suivante</a>
+                        <a href="?query={{ query }}&page={{ page_obj.paginator.num_pages }}">Fin &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </section>
+{% endblock %}

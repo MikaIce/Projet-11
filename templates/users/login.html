@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Se connecter{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <section id="harasai" class="h-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2 class="bg-secondary p-2 rounded text-light mb-5">Se connecter</h2>
+            </div>
+            <div class="row justify-content-center">
+                <form method="post" class="bg-light p-3 w-50 rounded">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                    <p class="new mt-3">Nouveau ici? <a href="{% url 'users:register' %}">Créer un compte</a></p>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

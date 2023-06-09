@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ prod.name }}{% endblock %}
+{% block content %}
+    <section id="prod" class="h-50 py-5" style="background-image: url({{ prod.image }})">
+        <div class="container">
+            <div class="row justify-content-center text-light mt-5">
+                <h2 class="bg-secondary text-center p-2 rounded mt-5">{{ prod.name }}</h2>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-6">
+                <img src="https://static.openfoodfacts.org/images/misc/nutriscore-{{prod.nutriscore}}.png" alt="NutriScore">
+            </div>
+            <div class="col-lg-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Repères nutritionnels</th>
+                            <th scope="col">pour 100g</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-muted">
+                        <tr>
+                            <th scope="row">Matières grasses</th>
+                            <td>{{ prod.fat }}g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Matières grasses saturées</th>
+                            <td>{{ prod.saturated_fat }}g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sucre</th>
+                            <td>{{ prod.sugars }}g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sel</th>
+                            <td>{{ prod.salt }}g</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row justify-content-center my-5">
+            <a target="_blank" class="btn btn-primary" href="{{ prod.link }}" role="button">Voir la fiche d'OpenFoodFacts</a>
+        </div>
+    </section>
+{% endblock %}
