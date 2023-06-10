@@ -90,45 +90,52 @@ class TestUserForms(TestCase):
         self.assertEqual(len(form.errors), 5)
 
     class ProfileModelTest(TestCase):
-
         def setUp(self):
+            """Set up a test user and associated profile for use in the tests"""
             self.user = User.objects.create(username='testuser')
             self.profile = Profile.objects.create(user=self.user)
 
         def test_profile_image_default_male(self):
+            """Test that the default profile image for the user is 'default_male.jpg'"""
             self.assertEqual(self.profile.profile_image.name, 'profile_images/default_male.jpg')
 
     class ProfileViewTest(TestCase):
-
         def setUp(self):
-            self.user = User.objects.create_user(username='testuser', password='12345')
+            """Set up a test user with a known password, and associated profile for use in the tests"""
+            self.user = User.objects.create_user(username='testuser', password='Abc.12345')
             self.profile = Profile.objects.create(user=self.user)
 
         def test_profile_view(self):
-            self.client.login(username='testuser', password='12345')
+            """Test that a logged in user can access the profile view"""
+            self.client.login(username='testuser', password='Abc.12345')
             response = self.client.get(reverse('profile'))
             self.assertEqual(response.status_code, 200)
+            # Test that the correct template is used for the profile view
             self.assertTemplateUsed(response, 'profile.html')
 
         def test_profile_form_valid(self):
-            self.client.login(username='testuser', password='12345')
+            """Test that a valid profile form can be submitted successfully"""
+            self.client.login(username='testuser', password='Abc.12345')
             form_data = {
                 'profile_image': SimpleUploadedFile(name='test_image.jpg',
                                                     content=open('profile_images/default_male.jpg', 'rb').read(),
                                                     content_type='image/jpeg')
             }
             response = self.client.post(reverse('profile'), data=form_data)
+            """Test that the profile image has been updated"""
             self.profile.refresh_from_db()
             self.assertNotEqual(self.profile.profile_image.name, 'profile_images/default_male.jpg')
+            """Test that a successful form submission results in a redirect (status code 302)"""
             self.assertEqual(response.status_code, 302)
 
     class ProfileFormTest(TestCase):
-
         def setUp(self):
-            self.user = User.objects.create_user(username='testuser', password='12345')
+            """Set up a test user with a known password, and associated profile for use in the tests"""
+            self.user = User.objects.create_user(username='testuser', password='Abc.12345')
             self.profile = Profile.objects.create(user=self.user)
 
         def test_profile_form_valid(self):
+            """Test that a valid profile form is considered valid by Django's form validation"""
             form = ProfileForm(data={'profile_image': SimpleUploadedFile(name='test_image.jpg',
                                                                          content=open('profile_images/default_male.jpg',
                                                                                       'rb').read(),
