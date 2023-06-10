@@ -37,6 +37,7 @@ def register(request):
 
 @login_required
 def profile(request):
+    """User update profile function"""
     if request.method == 'POST':
         p_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if p_form.is_valid():
