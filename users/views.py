@@ -60,6 +60,7 @@ def logout_view(request):
 
 @login_required
 def delete_account(request):
+    """User delete function"""
     profile = Profile.objects.get(user=request.user)
     profile.delete()
     request.user.delete()
