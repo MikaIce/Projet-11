@@ -141,3 +141,28 @@ class TestUserForms(TestCase):
                                                                                       'rb').read(),
                                                                          content_type='image/jpeg')})
             self.assertTrue(form.is_valid())
+
+    class TestProductSearchView(TestCase):
+        def setUp(self):
+            """Set up some products in the database for testing"""
+            Product.objects.create(name='Chepignon', description='This is Product1')
+            Product.objects.create(name='Sucre', description='This is Product2')
+
+        def test_product_search_typo(self):
+            """Simulate a typo in the product search"""
+            response = self.client.get(reverse('product_search') + '?q=Champignon')
+
+            """Check that the response status code is 200"""
+            self.assertEqual(response.status_code, 200)
+
+            """Check that no products are returned in the search results"""
+            self.assertEqual(len(response.context['products']), 0)
+
+        def test_product_search_substring(self):
+            """Search for a product name"""
+            response = self.client.get(reverse('product_search') + '?q=sucre')
+
+            """Check that the response status code is 200"""
+            self.assertEqual(response.status_code, 200)
+
+            """Check that the correct product is returned in the search results"""
